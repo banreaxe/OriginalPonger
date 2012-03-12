@@ -4,16 +4,23 @@ class PaddleScript (MonoBehaviour):
 	
 	public moveSpeed as single = 50
 	public maxSpeed as single = 50
+	gameScript as GameScript 
+	mobileInput as MobileInputScript 
+	
 
 	def Start ():
-		pass
-	
+		gameScript = gameObject.Find("Game").GetComponent('GameScript')
+		mobileInput = gameObject.Find("MobileInput").GetComponent('MobileInputScript')
+		
 	def Update ():
 		#Debug.Log("magnitude: $(rigidbody.velocity.magnitude)")
 		pass
 		
 	def FixedUpdate():
-		axis = Input.GetAxisRaw("Vertical")
+		if gameScript.IsMobile():
+			axis = mobileInput.AxisV()
+		else:
+			axis = Input.GetAxisRaw("Vertical")
 		force = axis * moveSpeed
 		
 		if axis != 0:

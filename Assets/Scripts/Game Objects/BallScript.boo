@@ -18,8 +18,8 @@ class BallScript (MonoBehaviour):
 		SpeedLimits()
 		
 		
-	def OnCollisionEnter(collision as Collision):
-		pass
+	#def OnCollisionEnter(collision as Collision):
+	#	pass
 	
 	def OnTriggerEnter(collider as Collider):
 		
